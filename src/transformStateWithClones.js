@@ -32,7 +32,8 @@ function transformStateWithClones(state, actions) {
         break;
 
       case 'clear':
-        addValues.push({});
+        currentState = {};
+        addValues.push(currentState);
         break;
     }
   }
