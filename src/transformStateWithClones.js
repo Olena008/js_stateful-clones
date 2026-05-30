@@ -17,25 +17,26 @@ function transformStateWithClones(state, actions) {
           ...currentState,
           ...action.extraData,
         };
-
-        addValues.push(currentState);
         break;
 
-      case 'removeProperties':
+      case 'removeProperties': {
         currentState = { ...currentState };
 
         for (const key of action.keysToRemove) {
           delete currentState[key];
         }
-
-        addValues.push(currentState);
         break;
+      }
 
       case 'clear':
         currentState = {};
-        addValues.push(currentState);
+        break;
+
+      default:
         break;
     }
+
+    addValues.push(currentState);
   }
 
   return addValues;
